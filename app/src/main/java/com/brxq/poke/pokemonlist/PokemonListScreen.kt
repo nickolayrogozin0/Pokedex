@@ -41,7 +41,8 @@ import com.brxq.poke.ui.theme.RobotoCondensed
 
 @Composable
 fun PokemonListScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: PokemonListViewModel = hiltViewModel()
 ) {
     Surface(
         color = MaterialTheme.colors.background,
@@ -62,7 +63,7 @@ fun PokemonListScreen(
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-
+                viewModel.searchPokemonList(it)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -135,13 +136,17 @@ fun PokemonList(
         viewModel.isLoading
     }
 
+    val isSearching by remember {
+        viewModel.isSearching
+    }
+
     LazyColumn(
         contentPadding = PaddingValues(16.dp)
     ) {
         val itemCount =
             if (pokemonList.size % 2 == 0) pokemonList.size / 2 else pokemonList.size / 2 + 1
         items(itemCount) {
-            if (it >= itemCount - 1 && !endReached) {
+            if (it >= itemCount - 1 && !endReached && !isLoading && !isSearching) {
                 viewModel.loadPokemonPaginated()
             }
             PokedexRow(
