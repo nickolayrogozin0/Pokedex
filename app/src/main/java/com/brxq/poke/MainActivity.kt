@@ -39,15 +39,6 @@ class MainActivity : ComponentActivity() {
 @HiltAndroidApp
 class MyApp : Application(){}
 
-@Module
-@InstallIn(SingletonComponent::class)
-class MyModule{
-
-    @Provides
-    @Singleton
-    fun provideString() = "Provided String"
-
-}
 
 
 
