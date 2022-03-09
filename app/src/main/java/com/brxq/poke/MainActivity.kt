@@ -36,8 +36,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@HiltAndroidApp
-class MyApp : Application(){}
 
 
 
