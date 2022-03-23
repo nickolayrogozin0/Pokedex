@@ -1,12 +1,15 @@
 package com.brxq.poke.data.remote.responses
 
+
+import com.google.gson.annotations.SerializedName
+
 data class Crystal(
+    @SerializedName("back_default")
     val backDefault: String,
+    @SerializedName("back_shiny")
     val backShiny: String,
-    val backShinyTransparent: String,
-    val backTransparent: String,
+    @SerializedName("front_default")
     val frontDefault: String,
-    val frontShiny: String,
-    val frontShinyTransparent: String,
-    val frontTransparent: String
+    @SerializedName("front_shiny")
+    val frontShiny: String
 )

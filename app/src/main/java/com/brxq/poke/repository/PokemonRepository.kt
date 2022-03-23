@@ -1,5 +1,6 @@
 package com.brxq.poke.repository
 
+import android.util.Log
 import com.brxq.poke.data.remote.PokeApi
 import com.brxq.poke.data.remote.responses.Pokemon
 import com.brxq.poke.data.remote.responses.PokemonList
@@ -27,6 +28,9 @@ class PokemonRepository @Inject constructor(
         } catch(e: Exception) {
             return Resource.Error("An unknown error occurred.")
         }
+
+        Log.i("RESPONSE", response.sprites.toString())
+
         return Resource.Success(response)
     }
 }
